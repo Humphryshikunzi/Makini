@@ -1,0 +1,88 @@
+﻿@page "/map"
+@attribute [Authorize(Policy = Permissions.SpeedGovernor.View)]
+@inject Microsoft.Extensions.Localization.IStringLocalizer<Brands> _localizer
+@using Microsoft.AspNetCore.SignalR.Client
+@using _.Domain.Entities.Catalog
+@using _.Shared.Constants.Application
+@using System.Security.Claims
+@using _.Application.Features.Products.Queries.GetAllPaged
+@using _.Application.Requests.Catalog
+
+<AppTitle Title="@_localizer["RealTime Map"]" Description="@_localizer["Search A speed Governor By Owner Name, to See the RealTime Map"]" />
+<div Elevation="25">
+            <div class="justify-between mud-text-align-center">
+            @if (_canSearchSpeedGov)
+            {
+                <MudItem xs="12" sm="6" md="4">
+                    <MudAutocomplete T="string" Label="Owner Name" @bind-Value="selectedValue" SearchFunc="@Search" 
+                                     ResetValueOnEmptyText="@false"
+                                     CoerceText="@false" CoerceValue="@false"
+                                     AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Primary"/>
+                </MudItem>
+                
+                <MudItem xs="12" md="12">
+                    <MudText Class="mb-n3" Typo="Typo.body2">
+                        <MudChip>@(selectedValue ?? "Please Select a speed Governor")</MudChip>
+                    </MudText>
+                </MudItem>
+            }
+        </div>
+</div>
+  <br/>
+  <br/>
+  <br/>
+<div id="map" style="height: 900px;width: 100%;"></div>
+<MudButton Variant="Variant.Filled" Color="Color.Primary" @onclick="@onClick"> Check Runtime </MudButton>
+
+@code {
+    [CascadingParameter] private HubConnection HubConnection { get; set; }
+    [Inject] private IJSRuntime runtime { get; set; }
+    [Inject]private ISpeedGovManager SpeedManager { get; set; }
+    private string _searchString = "";
+    private string selectedValue;
+    private int _totalItems;
+    private bool _canSearchSpeedGov;
+    private IEnumerable<GetAllPagedSpeedGovernor> _pagedData;
+    private ClaimsPrincipal _currentUser;
+    
+    protected override async Task OnInitializedAsync() {
+        _currentUser = await _authenticationManager.CurrentUser();
+        _canSearchSpeedGov = (await _authorizationService.AuthorizeAsync(_currentUser, Permissions.SpeedGovernor.Search)).Succeeded;
+        HubConnection = HubConnection.TryInitialize(_navigationManager);
+        await this.runtime.InvokeVoidAsync("console.log", HubConnection.State);
+        Console.WriteLine("console.writeline below: the state is  {0}", HubConnection.State);
+        if(HubConnection.State == HubConnectionState.Disconnected)
+        {
+            await HubConnection.StartAsync();
+        }
+         await this.runtime.InvokeAsync<string>("loadmap");
+    }
+      private async Task onClick()
+    {
+        await this.runtime.InvokeAsync<string>("testfunction", "edwin" );
+        await this.runtime.InvokeAsync<string>("loadmap");
+    }
+    private async Task<IEnumerable<string>> Search(string value)
+    {
+        await LoadData(value);
+        if (string.IsNullOrEmpty(value))
+        {      return _pagedData.Where(x => x.OwnerName == value).Select(x => x.PlateNumber);
+        }
+        return _pagedData.Where(x => x.OwnerName == value).Select(x => x.PlateNumber);
+    }
+    private async Task LoadData(string searchString){
+        var request = new GetAllSpeedGovernorRequest { SearchString = searchString, PageSize = 1000};
+        var response = await SpeedManager.GetSpeedGovernors(request);
+        if (response.Succeeded)
+        {
+            _totalItems = response.TotalCount;
+            _pagedData = response.Data;
+        } else
+        {
+            foreach (var message in response.Messages)
+            {
+                _snackBar.Add(message, Severity.Error);
+            }
+        }
+    }
+}
