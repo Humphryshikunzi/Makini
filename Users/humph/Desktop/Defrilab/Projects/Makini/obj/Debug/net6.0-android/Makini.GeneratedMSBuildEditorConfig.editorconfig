@@ -1,0 +1,209 @@
+is_global = true
+build_property.TargetFramework = net6.0-android
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Makini
+build_property.ProjectDir = c:\Users\humph\Desktop\Defrilab\Projects\Makini\
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/AppShell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.AppShell.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/MainPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.MainPage.xaml
+build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
+build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Src/Views/ActivityIndicatorPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Src.Views.ActivityIndicatorPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Src\Views\ActivityIndicatorPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Src\Views\ActivityIndicatorPage.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Src/Views/AuthPages/PasswordRecoveryConfirmPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Src.Views.AuthPages.PasswordRecoveryConfirmPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Src\Views\AuthPages\PasswordRecoveryConfirmPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Src\Views\AuthPages\PasswordRecoveryConfirmPage.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Src/Views/AuthPages/PasswordRequestCodePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Src.Views.AuthPages.PasswordRequestCodePage.xaml
+build_metadata.AdditionalFiles.TargetPath = Src\Views\AuthPages\PasswordRequestCodePage.xaml
+build_metadata.AdditionalFiles.RelativePath = Src\Views\AuthPages\PasswordRequestCodePage.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Src/Views/AuthPages/PasswordResetPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Src.Views.AuthPages.PasswordResetPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Src\Views\AuthPages\PasswordResetPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Src\Views\AuthPages\PasswordResetPage.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Src/Views/AuthPages/SignInPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Src.Views.AuthPages.SignInPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Src\Views\AuthPages\SignInPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Src\Views\AuthPages\SignInPage.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Src/Views/AuthPages/SignUpPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Src.Views.AuthPages.SignUpPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Src\Views\AuthPages\SignUpPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Src\Views\AuthPages\SignUpPage.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Src/Views/BookSharePages/ExploreBooksPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Src.Views.BookSharePages.ExploreBooksPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Src\Views\BookSharePages\ExploreBooksPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Src\Views\BookSharePages\ExploreBooksPage.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Src/Views/BookSharePages/ReadBookPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Src.Views.BookSharePages.ReadBookPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Src\Views\BookSharePages\ReadBookPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Src\Views\BookSharePages\ReadBookPage.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Src/Views/BookSharePages/SelectedSubjectPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Src.Views.BookSharePages.SelectedSubjectPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Src\Views\BookSharePages\SelectedSubjectPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Src\Views\BookSharePages\SelectedSubjectPage.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Src/Views/ChatPages/ForumPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Src.Views.ChatPages.ForumPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Src\Views\ChatPages\ForumPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Src\Views\ChatPages\ForumPage.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Src/Views/ChatPages/IncomingViewCell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Src.Views.ChatPages.IncomingViewCell.xaml
+build_metadata.AdditionalFiles.TargetPath = Src\Views\ChatPages\IncomingViewCell.xaml
+build_metadata.AdditionalFiles.RelativePath = Src\Views\ChatPages\IncomingViewCell.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Src/Views/ChatPages/OutgoingViewCell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Src.Views.ChatPages.OutgoingViewCell.xaml
+build_metadata.AdditionalFiles.TargetPath = Src\Views\ChatPages\OutgoingViewCell.xaml
+build_metadata.AdditionalFiles.RelativePath = Src\Views\ChatPages\OutgoingViewCell.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Src/Views/HomePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Src.Views.HomePage.xaml
+build_metadata.AdditionalFiles.TargetPath = Src\Views\HomePage.xaml
+build_metadata.AdditionalFiles.RelativePath = Src\Views\HomePage.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Src/Views/LandingPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Src.Views.LandingPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Src\Views\LandingPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Src\Views\LandingPage.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Src/Views/LibraryPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Src.Views.LibraryPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Src\Views\LibraryPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Src\Views\LibraryPage.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Src/Views/ProfilePages/ContactProfilePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Src.Views.ProfilePages.ContactProfilePage.xaml
+build_metadata.AdditionalFiles.TargetPath = Src\Views\ProfilePages\ContactProfilePage.xaml
+build_metadata.AdditionalFiles.RelativePath = Src\Views\ProfilePages\ContactProfilePage.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Src/Views/ProfilePages/EditProfilePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Src.Views.ProfilePages.EditProfilePage.xaml
+build_metadata.AdditionalFiles.TargetPath = Src\Views\ProfilePages\EditProfilePage.xaml
+build_metadata.AdditionalFiles.RelativePath = Src\Views\ProfilePages\EditProfilePage.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Src/Views/ProfilePages/ProfileStyles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Src.Views.ProfilePages.ProfileStyles.xaml
+build_metadata.AdditionalFiles.TargetPath = Src\Views\ProfilePages\ProfileStyles.xaml
+build_metadata.AdditionalFiles.RelativePath = Src\Views\ProfilePages\ProfileStyles.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Src/Views/ReviewsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Src.Views.ReviewsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Src\Views\ReviewsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Src\Views\ReviewsPage.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Src/Views/SettingPages/FAQPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Src.Views.SettingPages.FAQPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Src\Views\SettingPages\FAQPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Src\Views\SettingPages\FAQPage.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Src/Views/SettingPages/HelpPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Src.Views.SettingPages.HelpPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Src\Views\SettingPages\HelpPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Src\Views\SettingPages\HelpPage.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Src/Views/SettingPages/PolicyPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Src.Views.SettingPages.PolicyPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Src\Views\SettingPages\PolicyPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Src\Views\SettingPages\PolicyPage.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Src/Views/SettingPages/SettingPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Src.Views.SettingPages.SettingPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Src\Views\SettingPages\SettingPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Src\Views\SettingPages\SettingPage.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Src/Views/SettingPages/SettingStyles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Src.Views.SettingPages.SettingStyles.xaml
+build_metadata.AdditionalFiles.TargetPath = Src\Views\SettingPages\SettingStyles.xaml
+build_metadata.AdditionalFiles.RelativePath = Src\Views\SettingPages\SettingStyles.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Src/Views/SettingPages/TermsConditionsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Src.Views.SettingPages.TermsConditionsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Src\Views\SettingPages\TermsConditionsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Src\Views\SettingPages\TermsConditionsPage.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Src/Views/WalkThroughPages/IntroOnePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Src.Views.WalkThroughPages.IntroOnePage.xaml
+build_metadata.AdditionalFiles.TargetPath = Src\Views\WalkThroughPages\IntroOnePage.xaml
+build_metadata.AdditionalFiles.RelativePath = Src\Views\WalkThroughPages\IntroOnePage.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Src/Views/WalkThroughPages/IntroThreePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Src.Views.WalkThroughPages.IntroThreePage.xaml
+build_metadata.AdditionalFiles.TargetPath = Src\Views\WalkThroughPages\IntroThreePage.xaml
+build_metadata.AdditionalFiles.RelativePath = Src\Views\WalkThroughPages\IntroThreePage.xaml
+
+[c:/Users/humph/Desktop/Defrilab/Projects/Makini/Src/Views/WalkThroughPages/IntroTwoPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Makini.Src.Views.WalkThroughPages.IntroTwoPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Src\Views\WalkThroughPages\IntroTwoPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Src\Views\WalkThroughPages\IntroTwoPage.xaml
