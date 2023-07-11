@@ -1,0 +1,75 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+<style>
+    .content {
+        width: 82% !important;
+    }
+
+    td a:visited {
+        color: blueviolet !important;
+    }
+
+    td a:hover {
+        color: #c1c117 !important;
+    }
+</style>
+
+<form method="post" class="form-validate" style="display: flex;flex-direction: column-reverse;"
+    action="/view_roles{% if formData.update_id %}/{{formData.update_id}}{% endif %}">
+
+    <div class="row highlight" style="padding-top:2%;border-radius: 2%;">
+
+        <h3 class="page-heading">Roles</h3>
+
+        <button type="button" class="btn btn-success" onclick="create_role()" style="margin-left: 1100px;"
+            id="cancel">Add Role</button>
+
+        <div class="col-md-12" style="padding: 3%;">
+            <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+
+                <thead>
+                    <tr>
+                        <th class="th-sm">Role Id</th>
+                        <th class="th-sm">Role Name</th>
+                        <th class="th-sm">Role Description</th> 
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% if formData.roles %}
+                    {% for role in formData.roles %}
+                    <tr>
+                        <td>{{role.id}}</td>
+                        <td>{{role.name}}</td>
+                        <td>{{role.description}}</td> 
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td colspan="7"> No Record Found</td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <th>Role Id</th>
+                        <th>Role Name</th>
+                        <th>Role Description</th> 
+                    </tr>
+                </tfoot>
+            </table>
+
+        </div>
+    </div>
+</form>
+
+<script>
+    function create_role() {
+        window.location.href = 'create_role';
+    }
+</script>
+
+{% endblock content %}

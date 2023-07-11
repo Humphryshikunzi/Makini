@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/static/css/datatables.min.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href='/static/fontawesome-5_13/css/all.min.css'>
+
+  <style>
+    .validation-error-label {
+      color: red;
+    }
+
+    .footer-link {
+      color: white;
+    }
+
+    .header-link {
+      color: white;
+    }
+
+    .header-nav-bar {
+      color: black !important;
+      font-size: x-large;
+    }
+  </style>
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- MDBootstrap Datatables  -->
+  <script type="text/javascript" src="/static/javascript/datatables.min.js"></script>
+  <script src="/static/javascript/jquery.validate.js"></script>
+  <script src="/static/javascript/validation.js"></script>
+  <script src="/static/javascript/style.js"></script>
+
+  <link rel="icon" href="favcon/favcon.ico">
+  <title>Pamride</title>
+
+</head>
+
+<body style="background-color: #FFF9EFFF;">
+  <div style="height: 100vp;">
+
+    <!--start region page loader-->
+    {# Loader Window #}
+    <div id="loader" class="loader d-flex justify-content-center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <!--end region page loader-->
+
+    <!--start region navaigation bar-->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid" style="background-color : #4CAF50FF; height: 100px; padding-top: 20px;">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://pamride.com" target="_blank"
+            style="font-size:xx-large;margin-left: 40px; margin-right: 140px;"><span
+              style="color:black;opacity:60%;">Pamride</span><span
+              style="color:black;display: inline-block;"></span></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+
+            {% if session['username'] %} 
+            <li id="passengerManagement"
+              class="dropdown {% if url_for(request.endpoint) == url_for('customer_status') or url_for(request.endpoint) == url_for('view_profile')%}active {% endif %}"
+              style="margin-left: 10px;">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="font-size:22px;" role="button"
+                aria-expanded="false"><span style="color:black;">Passengers</span><b class="caret"></b></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="" style="display: none;">Create Passenger</a></li>
+                <li><a href="{{url_for('customer_status')}}"> Passengers Infor</a></li>
+                <li><a href="{{url_for('customer_search')}}">Passengers Search</a></li>
+              </ul>
+            </li>
+
+            <li id="driverManagement"
+              class="dropdown {% if url_for(request.endpoint) == url_for('driver_status') or url_for(request.endpoint) == url_for('view_driver_profile')%}active {% endif %}">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="font-size:22px;" role="button"
+                aria-expanded="false"><span style="color:black;">Drivers</span><b class="caret"></b></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="" style="display: none;">Create Driver</a></li>
+                <li><a href="{{url_for('driver_status')}}">Drivers Infor</a></li>
+                <li><a href="{{url_for('driver_search')}}">Driver Search</a></li>
+              </ul>
+            </li>
+
+            <li id="employeeManagement"
+              class="dropdown {% if url_for(request.endpoint) == url_for('employee_add') or url_for(request.endpoint) == url_for('employee_status') or url_for(request.endpoint) == url_for('view_employee_profile')%}active {% endif %}">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="font-size:22px;" role="button"
+                aria-expanded="false"><span style="color:black;">Empoyees</span><b class="caret"></b></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="{{ url_for('employee_add') }}" style="display: none;">Create Employee</a></li>
+                <li><a href="{{url_for('employee_status')}}">Employees Info</a></li>
+                <li><a href="{{url_for('employee_search')}}">Employee Search</a></li> 
+              </ul>
+            </li>
+
+            <li
+              class="dropdown {% if url_for(request.endpoint) == url_for('customer_status') or url_for(request.endpoint) == url_for('view_profile')%} active {% endif %}"
+              title="{{session['username']}}" style="margin-bottom: 10px;margin-left: 140px;">
+              <a href="#" class="dropdown-toggle" style="font-size:24px;" data-toggle="dropdown" role="button"
+                aria-expanded="false"><span style="color: black;opacity:60%">{{session['username']}}</span><b
+                  class="caret"></b></a>
+
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/employee_profile/{{'employee_id_placeholder'}}">Profile</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+              </ul>
+            </li>
+
+            {% else %}
+
+            <li
+              class="dropdown {% if url_for(request.endpoint) == url_for('customer_status') or url_for(request.endpoint) == url_for('view_profile')%}active{% endif %}"
+              title="Not Signed In" style="margin-top: 15px;margin-left: 580px;">
+              <a href="{{ url_for('home') }}" class="dropdown-toggle" style="font-size: 22px;margin-left: 360px;"
+                data-toggle="dropdown" role="button" aria-expanded="false"> <span style="color: black;opacity:60%">Sign
+                  in</span><b class="caret"></b></a>
+
+              <ul class="dropdown-menu" role="menu" style="margin-left:200px;">
+                <li><a href="{{ url_for('home') }}">Login</a></li> 
+              </ul>
+            </li>
+
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!--Show error messages-->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+
+    <div class="alert alert-warning alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="false"
+          style="color: black;"> Close</span></button>
+
+      {{message}}
+
+    </div>
+
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <div class="content">
+
+      {% block content %}
+
+      <!--Main Content for the Inherting templates goes here-->
+
+      {% endblock content %}
+
+    </div>
+
+    <footer class="page-footer font-small stylish-color-dark pt-4"
+      style="background-color: #4CAF50FF;margin-top: 20px;">
+
+      <!-- Footer Links -->
+      <div class="container text-center text-md-left">
+        <div class="container-fluid">
+          <div class="about-us col-md-4">
+            <h3>About us</h3>
+            <br />
+            <p><a href="https://pamride.com/about" target="_blank" style="font-size: larger;"><span
+                  style="color: white;">Vision & Mission</span></a></p>
+            <p><a href="https://pamride.com/terms_conditions" target="_blank" style="font-size: larger;"><span
+                  style="color: white;">Terms & Conditions</span></a></p>
+            <p><a href="https://pamride.com/privacy_policy" target="_blank" style="font-size: larger;"><span
+                  style="color: white;">Privacy Policy</span></a></p>
+          </div>
+
+          <div class="contact-us col-md-4">
+            <h3>Contact </h3>
+            <br />
+            <p class="contact-text footer-link">Phone : +254 703114341</p>
+            <p class="contact-text footer-link">Email : info@pamride.com</p> 
+            <p class="contact-text footer-link">Support : support@pamride.com</p>   
+            
+          </div>
+
+          <div class="contact-us col-md-4">
+            <h3>About</h3>
+            <br />
+            <p class="contact-text footer-link">
+              Connecting trusted car owners with people who need rides in the same direction, at affordable costs, to save on travel expenses
+            </p>
+          </div>
+        </div>
+        <br>
+
+        <!-- start Social buttons -->
+
+        <ul class="list-unstyled list-inline text-center">
+          <li class="list-inline-item">
+            <a href="https://web.facebook.com/pamrideltd" class="btn-floating btn-fb mx-1">
+              <i class="fab fa-facebook-f footer-link"> </i>
+            </a>
+          </li>
+
+          <li class="list-inline-item">
+            <a href="https://twitter.com/Pamride_Ltd" class="btn-floating btn-tw mx-1">
+              <i class="fab fa-twitter footer-link"> </i>
+            </a>
+          </li>
+
+          <li class="list-inline-item">
+            <a href="https://www.instagram.com/pamrideltd" class="btn-floating btn-gplus mx-1">
+              <i class="fab fa-instagram footer-link"> </i>
+            </a>
+          </li>
+
+          <li class="list-inline-item">
+            <a href="https://www.linkedin.com/company/pamride" class="btn-floating btn-li mx-1">
+              <i class="fab fa-linkedin-in footer-link"> </i>
+            </a>
+          </li>
+        </ul>
+
+        <!--end Social buttons -->
+
+        <br>
+
+        <!-- start Copyright -->
+
+        <div class="footer-copyright text-center py-3">
+          ©Oct  <span id="copyright"></span> Copyright: <a href="https://pamride.com" target="_blank">pamride.com</a>
+        </div>
+
+        <!-- end Copyright -->
+    </footer>
+  </div>
+
+  <script>
+    const currentYear = new Date().getFullYear();
+    const copyrightString = `${currentYear}`;
+
+    // Select the span element
+    const span = document.getElementById("copyright");
+
+    // Update its innerHTML with the new string
+    span.innerHTML = copyrightString;
+
+    $(function () {
+      $("#datepicker").datepicker();
+    });
+  </script>
+</body>
+
+</html>

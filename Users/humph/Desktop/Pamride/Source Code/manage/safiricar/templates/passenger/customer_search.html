@@ -1,0 +1,47 @@
+{% extends './base.html' %}
+
+{% block content %}
+<style>
+    .content {
+        width: 52% !important;
+    }
+
+    td a:visited {
+        color: blueviolet !important;
+    }
+
+    td a:hover {
+        color: #c1c117 !important;
+    }
+
+    @media (max-width: 767px) {
+        .content {
+            width: 100% !important;
+        }
+    }
+</style>
+
+<form method="post" class="form-validate" action="{{formData.post_url}}" style="margin-top: 40px;margin-bottom: 40px;min-height:310px;">
+    <div class="row highlight" style="padding-top:2%;border-radius: 2%;">
+        <h3 class="page-heading">Search Passenger</h3>
+        
+        <div class="col-md-8" style="padding: 3%;">
+            <div class="form-group">
+                <label for="search_criteria" style="font-size: large;">Choose Search Criteria&ensp; </label> 
+                
+                <select style="font-size: large;" name="search_criteria" id="search_criteria">
+                  {% for Criteria in search_criteria_options %}
+                    <option value="{{ Criteria }}" SELECTED>{{ Criteria }}</option>
+                  {% endfor %}     
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="search_value">Enter Search Value : </label>
+                <input value="" class="form-control" name="search_value" id="search_value" />
+            </div> 
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form> 
+{% endblock content %}

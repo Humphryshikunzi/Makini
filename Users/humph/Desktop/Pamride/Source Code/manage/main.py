@@ -1,0 +1,1 @@
+from safiricar import app

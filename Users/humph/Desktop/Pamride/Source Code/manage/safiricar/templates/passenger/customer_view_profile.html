@@ -1,0 +1,209 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+<style>
+    .content {
+        width: 90% !important;
+    }
+
+    .float-container {
+        border: 3px solid #fff;
+        padding: 5px;
+    }
+
+    .float-child {
+        width: 50%;
+        float: left;
+        padding: 4px;
+        border-right: 2px solid rgb(145, 255, 0);
+    }
+
+    .float-child-right {
+        width: 50%;
+        float: left;
+        padding: 4px;
+    }
+
+    td a:visited {
+        color: blueviolet !important;
+    }
+
+    td a:hover {
+        color: #c1c117 !important;
+    }
+
+    input {
+        position: absolute;
+        right: 0;
+    }
+
+     /* Float four columns side by side */
+     .column {
+        float: left;
+        width: 50%;
+        padding: 0 10px;
+    }
+        /* Remove extra left and right margins, due to padding */
+    .row {margin: 0 -5px;}
+
+    /* Clear floats after the columns */
+    .row:after {
+    content: "";
+    display: table;
+    clear: both;
+    }
+ 
+    /* Responsive columns */
+    @media screen and (max-width: 600px) {
+        .column {
+            width: 100%;
+            display: block;
+            margin-bottom: 20px;
+        }
+    }
+
+    /* Style the counter cards */
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding: 16px;
+        text-align: center; 
+        height: 210px;
+    }
+
+</style>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet" />
+
+<div class="float-container row highlight" style="background-color: #FFF9EFFF;">
+    <div class="float-child">
+
+        <div class="row highlight" style="padding-top:1%;margin-right: 22px; border-radius: 2%;">
+            <h3 class="page-heading">customer "{{formData.customer.userName}}" Details</h3>
+            <div class="column">
+                <div class="card">
+                    <input type="file" name="filename" id="filename" accept="image/*" onchange="previewImage()" style="margin-right:1166px; margin-top: 170px;visibility:hidden;" />
+                    <img id="profileImageFrame" src="data:image/jpg;base64,{{ formData.profile_image | safe }}" width="160px" height="160px">
+                    <br> 
+                    <input type="hidden" id="customer_update_id" value="{{formData.customer.id}}" />
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card">
+                    <div class="form-group">
+                        <label for="customer_id" style="text-align: center;">ID : {{formData.customer.id}}</label> 
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customer_name"  style="text-align: left;">UserName : {{formData.customer.userName}}</label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customer_email" style="text-align: left;">Email : {{formData.customer.email}} </label> 
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <form method="post" style="margin-right:30px;" class="form-validate"  action="/profile{% if formData.update_id %}/{{formData.update_id}}{% endif %}">
+            <div class="row highlight" style="padding-top:1%;border-radius: 2%;"> 
+
+                <div class="col-md-8" style="padding: 3%;">                     
+
+                    <div class="form-group">
+                        <label for="age">National Id : </label>
+                        <input value="{{formData.customer.nationalId}}" disabled="true" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="age">UserName : </label>
+                        <input value="{{formData.customer.userName}}" disabled="true" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="age">IsActive : </label>
+                        <input value="{{formData.customer.isActive}}" disabled="true" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customer_address">Phone Number : </label>
+                        <textarea class="form-control" data-rule-addressLine1="true" disabled="true" name="address"  class="form-control" id="address" rows="3">{{formData.customer.phoneNumber}}</textarea>
+                    </div>
+
+                    <input type="hidden" id="customer_delete_id" value="{{formData.update_id}}" />
+
+                    <button type="button" class="btn btn-primary" id="cancel"  onclick="return window.history.back();">Back</button>
+
+                    <button type="button" class="btn btn-warning" onclick="sweetPopupCustomer(this);">Disable Account</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="float-child-right">
+        <form method="post" style="margin-left:30px;" class="form-validate" action="/profile{% if formData.update_id %}/{{formData.update_id}}{% endif %}">
+            <div class="row highlight" style="padding-top:2%;border-radius: 2%;">
+                <h3 class="page-heading">Customer Activities</h3> 
+                
+                <div class="form-group" style="margin-right: 10px;"> 
+                    <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th class="th-sm">ActivityId</th>
+                                <th class="th-sm">Title</th>
+                                <th class="th-sm">Description</th>
+                                <th class="th-sm">Date</th>
+                                <th class="th-sm">Time</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% if formData.userActivities_obj %}
+                            {% for userActivity  in formData.userActivities_obj %}
+                            <tr>
+                                <td>{{userActivity.id}}</td>
+                                <td>{{userActivity.title}}</td>
+                                <td>{{userActivity.description}}</td>
+                                <td>{{userActivity.activityDate}}</td>
+                                <td>{{userActivity.timeOfActivity}}</td>
+                            </tr>
+                            {% endfor %}
+                            {% else %}
+                            <tr>
+                                <td colspan="7">No Passenger Activity Found</td>
+                            </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function sweetPopupCustomer(element) {
+        swal({
+            title: "Are you sure?",
+            text: "You want to Disable this Account? The owner will not be able to use it until its enabled!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Yes, Disable it!",
+            closeOnConfirm: false
+        },
+
+        function disable_customer_account() {
+            window.location.href = '/disable_customer_account/{{formData.update_id}}';
+        });
+    }
+
+    function search_passenger_activity() {
+        window.location.href = '/customer/search_activity/{{formData.update_id}}';
+    }
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
+{% endblock content %}

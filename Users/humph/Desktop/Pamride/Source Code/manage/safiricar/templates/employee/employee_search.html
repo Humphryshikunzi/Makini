@@ -1,0 +1,38 @@
+{% extends './base.html' %}
+{% block content %}
+<style>
+.content{
+    width: 52%;
+}
+
+@media only screen and (max-width: 600px) {
+    .content {
+        width: 100% !important;
+    }
+}
+
+td a:visited{
+    color:blueviolet !important;
+}
+td a:hover{
+    color:#c1c117 !important;
+}
+</style>
+<form method="post" class="form-validate" action="{{formData.post_url}}" style="margin-top: 40px;margin-bottom: 40px;">
+<div class="row highlight" style="padding-top:2%;border-radius: 2%;">
+    <h3 class="page-heading">Search Employee</h3>
+    <div class="col-md-8 content" style="padding: 3%;">
+        <div class="form-group">
+            <label for="employee_email">Employee Email : </label> 
+            <input value="" class="form-control" name="employee_email" id="employee_email" />
+        </div>         
+        <h3 style="text-align:center;">Or</h3>  
+        <div class="form-group" style="clear:both;">            
+            <label for="employee_username">Employee UserName : </label> 
+            <input value="" class="form-control" name="employee_username" id="employee_username" />        
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>       
+</div>
+</form>
+{% endblock content %}

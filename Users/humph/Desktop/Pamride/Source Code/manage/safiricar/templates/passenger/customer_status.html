@@ -1,0 +1,86 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+<style>
+    .content {
+        width: 100% !important;
+    }
+
+    td a:visited {
+        color: blueviolet !important;
+    }
+
+    td a:hover {
+        color: #c1c117 !important;
+    }
+    
+    table {
+        width: 100%;
+    }
+
+    @media (max-width: 767px) {
+        table {
+            display: block;
+            overflow-x: auto;
+        }
+    }
+</style>
+<form method="post" class="form-validate"  action="/customer{% if formData.update_id %}/{{formData.update_id}}{% endif %}">
+    <div class="row highlight" style="border-radius: 2%;">
+        <h3 class="page-heading">Passengers</h3>        
+        <a href="/export_passengers_to_excel" style="float: right;font-size:large;margin-right:20px;">Export to Excel</a>    
+        <div class="col-md-12" style="padding: 3%;">
+            <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">    
+                <thead>
+                    <tr>
+                        <th class="th-sm">Passenger Id</th>
+                        <th class="th-sm">Email</th>
+                        <th class="th-sm">UserName</th>
+                        <th class="th-sm">LastName</th>
+                        <th class="th-sm">National Id</th>
+                        <th class="th-sm">Phone Number</th>
+                        <th class="th-sm">IsActive</th>
+                        <th class="th-sm">Operations</th>
+                        <th class="th-sm">View Profile</th>
+                    </tr>
+                </thead>    
+                <tbody>
+                    {% if formData.customer_status %}
+                    {% for customer in formData.customer_status %}
+                    <tr>
+                        <td>{{customer.id}}</td>
+                        <td>{{customer.email}}</td>
+                        <td>{{customer.userName}}</td>
+                        <td>{{customer.lastName}}</td>
+                        <td>{{customer.nationalId}}</td>
+                        <td>{{customer.phoneNumber}}</td>
+                        <td>{{customer.isActive}}</td>
+                        <td><a href="{{url_for(request.endpoint)}}">Refresh</a></td>
+                        <td><a href="/profile/{{customer.id}}">View Profile</a></td>
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td colspan="7"> No Record Found</td>
+                    </tr>
+                    {% endif %}
+                </tbody>    
+                <tfoot>
+                    <tr>
+                        <th>Passenger Id</th>
+                        <th>Email</th>
+                        <th>UserName</th>
+                        <th>LastName</th>
+                        <th>National Id</th>
+                        <th>Phone Number</th>
+                        <th>IsActive</th>
+                        <th>Operations</th>
+                        <th>View Profile</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</form>
+{% endblock content %}

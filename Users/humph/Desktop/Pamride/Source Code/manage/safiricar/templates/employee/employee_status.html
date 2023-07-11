@@ -1,0 +1,86 @@
+{% extends './base.html' %}
+{% block content %}
+
+<style>
+    .content {
+        width: 100% !important;
+    }
+
+    td a:visited {
+        color: blueviolet !important;
+    }
+
+    td a:hover {
+        color: #c1c117 !important;
+    }
+
+    table {
+        width: 100%;
+        overflow-x: scroll;
+    }
+
+    @media (max-width: 576px) {
+        table {
+            display: block;
+        }
+    }
+</style>
+<form method="post" class="form-validate" style="display: flex;flex-direction: column;">
+    <div class="row highlight" style="padding-top:2%;border-radius: 2%;">
+        <h3 class="page-heading">Employees</h3>
+        <a href="/export_employees_to_excel" style="float: right; font-size: large; margin-right:20px;">Export to Excel</a>
+        <div class="col-md-12" style="padding: 3%;">
+            <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th class="th-sm">Employee Id</th>
+                        <th class="th-sm">Email</th>
+                        <th class="th-sm">UserName</th>
+                        <th class="th-sm">LastName</th>
+                        <th class="th-sm">National Id</th>
+                        <th class="th-sm">Phone Number</th>
+                        <th class="th-sm">IsActive</th>
+                        <th class="th-sm">Operations</th>
+                        <th class="th-sm">View Profile</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if formData.employee_status %}
+                    {% for employee in formData.employee_status %}
+                    <tr>
+                        <td>{{employee.id}}</td>
+                        <td>{{employee.email}}</td>
+                        <td>{{employee.userName}}</td>
+                        <td>{{employee.lastName}}</td>
+                        <td>{{employee.nationalId}}</td>
+                        <td>{{employee.phoneNumber}}</td>
+                        <td>{{employee.isActive}}</td>
+                        <td><a href="{{url_for(request.endpoint)}}">Refresh</a></td>
+                        <td><a href="/employee_profile/{{employee.id}}">View Profile</a></td>
+                    </tr>
+                    {% endfor %}                    
+
+                    {% else %}
+                    <tr>
+                        <td colspan="7"> No Record Found</td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Driver Id</th>
+                        <th>Email</th>
+                        <th>UserName</th>
+                        <th>LastName</th>
+                        <th>National Id</th>
+                        <th>Phone Number</th>
+                        <th>IsActive</th>
+                        <th>Operations</th>
+                        <th>View Profile</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</form>
+{% endblock content %}

@@ -1,0 +1,46 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+<form method="post" id="form-validate" enctype="multipart/form-data" style="margin-top: 72px;margin-bottom: 72px;"
+    action="/create_role{% if formData.update_id %}/{{formData.update_id}}{% endif %}">
+
+    <div class="row highlight" style="padding-top:2%;border-radius: 2%;">
+
+        <h3 class="page-heading">Register Role</h3>
+
+        <div class="col-md-12" style="padding: 3%;">
+
+            <div class="form-group">
+                <label for="role_name">Role Name</label>
+                <input type="text" {% if formData.update_id %}disabled="true" {% endif %} name="role_name"
+                    class="form-control" id="role_name"
+                    value="{% if formData.postForm and formData.postForm.role_name %}{{formData.postForm.role_name}}{% endif %}"
+                    placeholder="Enter Role Name">
+            </div>
+
+            <div class="form-group">
+                <label for="role_description">Role Description</label>
+                <input type="text" name="role_description" class="form-control"
+                    value="{% if formData.postForm and formData.postForm.role_description %}{{formData.postForm.role_description}}{% endif %}"
+                    id="role_description" placeholder="Enter Role Description">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+            {% if not formData.update_id %}
+            <button type="button" class="btn btn-warning" id="reset_create_role" onclick="clearForm()">Reset</button>
+            {% endif %}
+
+            <button type="button" class="btn btn-info" id="cancel"
+                onclick="return window.history.back();">Back</button>
+        </div>
+    </div>
+</form>
+
+<script>
+    function clearForm() {
+        $('#role_name').val("");
+        $('role_description').val("");
+    }
+</script>
+{% endblock content %}

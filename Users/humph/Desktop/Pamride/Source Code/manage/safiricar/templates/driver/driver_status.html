@@ -1,0 +1,88 @@
+{% extends './base.html' %}
+{% block content %}
+
+<style>
+    .content {
+        width: 100% !important;
+    }
+
+    td a:visited {
+        color: blueviolet !important;
+    }
+
+    td a:hover {
+        color: #c1c117 !important;
+    }
+    
+    @media (max-width: 576px) {
+        .content {
+            width: 100% !important;
+        }
+    }
+</style>
+<form method="post" class="form-validate" style="display: flex;flex-direction: column-reverse;" action="/driver{% if formData.update_id %}/{{formData.update_id}}{% endif %}">
+    <div class="row highlight" >
+        <h3 class="page-heading">Drivers</h3>
+        <a href="/export_drivers_to_excel" style="float: right;font-size: large;margin-right: 20px;">Export to Excel</a>
+        <div class="col-md-12" style="padding: 3%;">
+            <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th class="th-sm">Driver Id</th>
+                        <th class="th-sm">Email</th>
+                        <th class="th-sm">UserName</th>
+                        <th class="th-sm">LastName</th>
+                        <th class="th-sm">National Id</th>
+                        <th class="th-sm">Phone Number</th>
+                        <th class="th-sm">Owned Cars</th>
+                        <th class="th-sm">IsActive</th>
+                        <th class="th-sm">Operations</th>
+                        <th class="th-sm">View Profile</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if formData.driver_status %}
+                    {% for driver in formData.driver_status %}
+                    <tr>
+                        <td>{{driver.id}}</td>
+                        <td>{{driver.email}}</td>
+                        <td>{{driver.userName}}</td>
+                        <td>{{driver.lastName}}</td>
+                        <td>{{driver.nationalId}}</td>
+                        <td>{{driver.phoneNumber}}</td>
+                        <td>
+                           {% for car in driver.ownedCars %}
+                           {{car.licensePlate}}
+                           {% endfor %}
+                        </td>
+                        <td>{{driver.isActive}}</td>
+                        <td><a href="{{url_for(request.endpoint)}}">Refresh</a></td>
+                        <td><a href="/driver_profile/{{driver.id}}">View Profile</a></td>
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td colspan="7"> No Record Found</td> s
+                    </tr>
+                    {% endif %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Driver Id</th>
+                        <th>Email</th>
+                        <th>UserName</th>
+                        <th>LastName</th>
+                        <th>National Id</th>
+                        <th>Phone Number</th>
+                        <th>Owned Cars</th>
+                        <th>IsActive</th>
+                        <th>Operations</th>
+                        <th>View Profile</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</form>
+
+{% endblock content %}

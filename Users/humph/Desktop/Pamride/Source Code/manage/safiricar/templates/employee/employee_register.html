@@ -1,0 +1,77 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+<form method="post" id="form-validate" enctype="multipart/form-data" action="/employee{% if formData.update_id %}/{{formData.update_id}}{% endif %}">
+
+    <div class="row highlight" style="padding-top:2%;border-radius: 2%;">
+
+        <h3 class="page-heading">Register Employee</h3>
+
+        <div class="col-md-12" style="padding: 3%;">
+            <div class="form-group">
+                <label for="employee_first_name">First Name</label>
+                <input type="text" {% if formData.update_id %}disabled="true" {% endif %} name="employee_first_name"
+                    class="form-control" id="employee_first_name"
+                    value="{% if formData.postForm and formData.postForm.employee_first_name %}{{formData.postForm.employee_first_name}}{% endif %}"
+                    placeholder="Enter  First Name">
+            </div>
+
+            <div class="form-group">
+                <label for="employee_last_name">Last Name</label>
+                <input type="text" name="employee_last_name" class="form-control"
+                    value="{% if formData.postForm and formData.postForm.employee_last_name %}{{formData.postForm.employee_last_name}}{% endif %}"
+                    id="employee_last_name" placeholder="Enter Latst Name">
+            </div>
+
+            <div class="form-group">
+                <label for="employee_user_name">User Name</label>
+                <input type="text" name="employee_user_name" class="form-control"
+                    value="{% if formData.postForm and formData.postForm.employee_user_name %}{{formData.postForm.employee_user_name}}{% endif %}"
+                    id="employee_user_name" placeholder="Enter  UserName">
+            </div>
+
+            <div class="form-group">
+                <label for="employee_national_id">National Id</label>
+                <input type="text" {% if formData.update_id %}disabled="true" {% endif %} name="employee_national_id"
+                    class="form-control" id="employee_national_id"
+                    value="{% if formData.postForm and formData.postForm.employee_national_id %}{{formData.postForm.employee_national_id}}{% endif %}"
+                    placeholder="Enter  NationalId">
+            </div>
+
+            <div class="form-group">
+                <label for="employee_email">Email</label>
+                <input type="text" name="employee_email" class="form-control"
+                    value="{% if formData.postForm and formData.postForm.employee_email %}{{formData.postForm.employee_email}}{% endif %}"
+                    id="employee_email" placeholder="Enter  Email">
+            </div>
+
+            <div class="form-group">
+                <label for="employee_phone_number">Phone Number</label>
+                <input type="text" name="employee_phone_number" class="form-control" id="employee_phone_number"
+                    value="{% if formData.postForm and formData.postForm.employee_phone_number %}{{formData.postForm.employee_phone_number}}{% endif %}"
+                    placeholder="Enter Phone Number">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+            {% if not formData.update_id %}
+            <button type="button" class="btn btn-warning" id="reset_create_customer" onclick="clearForm()">Reset</button>
+
+            {% endif %}
+            <button type="button" class="btn btn-info" id="cancel" onclick="return window.history.back();">Back</button>
+        </div>
+    </div>
+</form>
+<script>
+
+    function clearForm() {
+        $('#employee_first_name').val("");
+        $('#employee_last_name').val("");
+        $('#employee_user_name').val("");
+        $('#employee_national_id').val("");
+        $('#employee_email').val("");
+        $('#employee_phone_number').val("");
+    }
+</script>
+{% endblock content %}
