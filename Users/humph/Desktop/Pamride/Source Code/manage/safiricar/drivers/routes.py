@@ -86,9 +86,8 @@ def view_driver_profile(id):
 
         ''' % (role_id)
         response = requests.post(
-            BASE_URL, json={'query': query}, headers=get_headers(), verify=False) 
-        print(response.status_code)
-        print(response.text)
+            BASE_URL, json={'query': query}, headers=get_headers(), verify=False)  
+        
         users_objs = json.loads(response.text)
 
         drivers = users_objs['data']['usersInRole']

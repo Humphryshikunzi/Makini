@@ -1,6 +1,7 @@
-import datetime
 import requests
 
+
+from datetime import datetime, timezone
 from flask import render_template, request, json, flash, redirect, session, url_for
 
 from safiricar import app
@@ -46,19 +47,17 @@ def home():
                     session['token'] = token
                     session['refreshToken'] = refreshToken  
                     session['profilePictureDataUrl'] = profilePictureDataUrl 
-                    session["token_expiry_time"] = datetime.datetime.now() 
-                    
-                    # get roles and store in session 
-                    get_roles() 
-                                       
+                    session["token_expiry_time"] = datetime.now(timezone.utc)   
+
+                    get_roles()  
+
                     global employees
 
                     roles = session['roles']
                     role_infor = [role for role in roles if role['name']=='Employee']
                     role_id = role_infor[0]['id']
                     query = 'query { usersInRole(roleId:' + "\"{role_id}\"".format(role_id=role_id) + ') { id, email, userName, lastName, nationalId, phoneNumber, isActive, profilePictureDataUrl } }'
-                    
-
+                 
                     response = requests.post(BASE_URL, json={'query':query}, headers=get_headers(), verify=False)  
                     users_objs= json.loads(response.text) 
                     

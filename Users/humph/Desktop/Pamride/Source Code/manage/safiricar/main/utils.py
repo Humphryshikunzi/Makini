@@ -47,7 +47,7 @@ def get_headers ():
     return headers
 
 def check_token_expiration(token, refreshToken, stored_time):
-    current_time =  datetime.now(timezone.utc)
+    current_time =  datetime.now(timezone.utc) 
 
     # Calculate the time difference between the current time and the stored time
     time_difference = stored_time - current_time 
